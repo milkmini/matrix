@@ -1,0 +1,30 @@
+* {
+    box-sizing: border-box;
+}
+.wrapper {
+    display: inline-flex;
+    flex-direction: column;
+    margin: 20px;
+}
+.wrapper  input{
+    padding: 3px;
+    margin: 10px;
+}
+.block {
+    margin: 30px;
+}
+.block__col {
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    margin: 5px;
+    border-radius: 4px;
+    box-shadow: 1px 1px 3px #a0a0a0;
+    background-color: #fff;
+    font-size: 18px;
+    text-align: center;
+    line-height: 40px;
+}
+
+
+
