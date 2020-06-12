@@ -2,6 +2,10 @@
 const valueInput = (id) => {
     return document.getElementById(id).value;
 }
+// отчищаем значение инпута
+const cleanInput = (id) => {
+    return document.getElementById(id).value = ' ';
+}
 // создание матрицы
 function matrix(widthBlock, lengthBlock) {
     // Переменные схемы матрицы
@@ -47,20 +51,23 @@ function matrix(widthBlock, lengthBlock) {
     return result;
 }
 // Вырисовка матрицы
-function matrixView( result ) {
+function matrixView(result) {
     let rows = '';
     // делаем построение матницы
     for(let i = 0; i < result.length; i++) {
-      let cells = '';
+        let cells = '';
         // построение колоннок
-      for(let j = 0; j < result[i].length; j++) {
-        cells += '<div class="block__col">' + result[i][j] + '</div>';
-      }
-    //   построение горизонталей
-      rows += '<div class="block__row">' + cells + '</div>';
+        for(let j = 0; j < result[i].length; j++) {
+            cells += '<div class="block__col">' + result[i][j] + '</div>';
+        }
+    // построение горизонталей
+        rows += '<div class="block__row">' + cells + '</div>';
     }
     // рисуем их в HTML
-    document.querySelector('body').insertAdjacentHTML('beforeend', '<div class="block">' + rows + '</div>');
+    let div = document.createElement('div');
+    div.className = "block";
+    div.innerHTML = rows;
+    section.after(div);
 }
 // Построенние матрицы
 document.getElementById('button').onclick = function () {
@@ -69,4 +76,6 @@ document.getElementById('button').onclick = function () {
     const lengthBlock = Number(valueInput('length'));
     // передаем их в функции
     matrixView(matrix(widthBlock, lengthBlock));
+    cleanInput('length');
+    cleanInput('width');
 }
